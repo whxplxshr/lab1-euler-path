@@ -1,0 +1,51 @@
+Running TestGraphUtilsBVA...
+Running test_bva_zero_nodes...
+FAIL: Regex pattern did not match.
+  Expected regex: 'no Euler path'
+  Actual message: 'Graph does not have an Euler path'
+Traceback (most recent call last):
+  File "C:\Users\Nikita\Documents\Тестировка\lab1\tests\test_bva.py", line 31, in test_bva_zero_nodes
+    get_euler_start_vertex(g)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\Nikita\Documents\Тестировка\lab1\src\graph_utils.py", line 51, in get_euler_start_vertex
+    raise ValueError("Graph does not have an Euler path")
+ValueError: Graph does not have an Euler path
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nikita\Documents\Тестировка\lab1\debug_test.py", line 21, in run_debug
+    t.test_bva_zero_nodes()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Nikita\Documents\Тестировка\lab1\tests\test_bva.py", line 30, in test_bva_zero_nodes
+    with pytest.raises(ValueError, match="no Euler path"):
+         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nikita\AppData\Roaming\Python\Python314\site-packages\_pytest\raises.py", line 719, in __exit__
+    raise AssertionError(self._fail_reason)
+AssertionError: Regex pattern did not match.
+  Expected regex: 'no Euler path'
+  Actual message: 'Graph does not have an Euler path'
+Running test_bva_one_node_zero_edges...
+PASS
+
+Testing Hierholzer...
+  test_bva_min_path_1_edge... PASS
+  test_bva_min_circuit_triangle... PASS
+  test_bva_disconnected_with_edges... PASS
+
+Testing Fleury...
+  test_bva_min_path_1_edge... PASS
+  test_bva_min_circuit_triangle... PASS
+  test_bva_disconnected_with_edges... PASS
+
+Testing IOHandler...
+  test_bva_load_empty_json_object... PASS
+  test_bva_load_empty_lists... PASS
+  test_bva_load_single_vertex_no_edges... PASS
+  test_bva_save_single_node_path... PASS
+  test_bva_save_empty_algo_name... PASS
+
+Testing ConsoleInputBVA...
+  test_bva_zero_vertices... PASS
+  test_bva_one_vertex_zero_edges... PASS
+  test_bva_min_valid_edge_input... PASS

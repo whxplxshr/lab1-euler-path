@@ -1,0 +1,155 @@
+==========================================
+Running Epic 4 Tests (Sequential Execution)
+==========================================
+
+[1/4] Running Boundary Value Analysis Tests...
+============================= test session starts =============================
+platform win32 -- Python 3.14.2, pytest-9.0.2, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Nikita\Documents\╥хёЄшЁютър\lab1
+collecting ... collected 19 items
+
+tests/test_bva.py::TestGraphUtilsBVA::test_bva_zero_nodes FAILED         [  5%]
+tests/test_bva.py::TestGraphUtilsBVA::test_bva_one_node_zero_edges PASSED [ 10%]
+tests/test_bva.py::TestGraphUtilsBVA::test_bva_two_nodes_one_edge PASSED [ 15%]
+tests/test_bva.py::TestGraphUtilsBVA::test_bva_triangle_min_circuit PASSED [ 21%]
+tests/test_bva.py::TestGraphUtilsBVA::test_bva_boundary_odd_vertices_4 PASSED [ 26%]
+tests/test_bva.py::TestAlgorithmsBVA::test_bva_min_path_1_edge[hierholzer] PASSED [ 31%]
+tests/test_bva.py::TestAlgorithmsBVA::test_bva_min_path_1_edge[fleury] PASSED [ 36%]
+tests/test_bva.py::TestAlgorithmsBVA::test_bva_min_circuit_triangle[hierholzer] PASSED [ 42%]
+tests/test_bva.py::TestAlgorithmsBVA::test_bva_min_circuit_triangle[fleury] PASSED [ 47%]
+tests/test_bva.py::TestAlgorithmsBVA::test_bva_disconnected_with_edges[hierholzer] PASSED [ 52%]
+tests/test_bva.py::TestAlgorithmsBVA::test_bva_disconnected_with_edges[fleury] PASSED [ 57%]
+tests/test_bva.py::TestIOHandlerBVA::test_bva_load_empty_json_object PASSED [ 63%]
+tests/test_bva.py::TestIOHandlerBVA::test_bva_load_empty_lists PASSED    [ 68%]
+tests/test_bva.py::TestIOHandlerBVA::test_bva_load_single_vertex_no_edges PASSED [ 73%]
+tests/test_bva.py::TestIOHandlerBVA::test_bva_save_single_node_path PASSED [ 78%]
+tests/test_bva.py::TestIOHandlerBVA::test_bva_save_empty_algo_name PASSED [ 84%]
+tests/test_bva.py::TestConsoleInputBVA::test_bva_zero_vertices PASSED    [ 89%]
+tests/test_bva.py::TestConsoleInputBVA::test_bva_one_vertex_zero_edges PASSED [ 94%]
+tests/test_bva.py::TestConsoleInputBVA::test_bva_min_valid_edge_input PASSED [100%]
+
+================================== FAILURES ===================================
+____________________ TestGraphUtilsBVA.test_bva_zero_nodes ____________________
+
+self = <tests.test_bva.TestGraphUtilsBVA object at 0x0000015EBCDFED50>
+
+    def test_bva_zero_nodes(self):
+        """Boundary: 0 nodes -> No Euler path."""
+        g = nx.Graph()
+        assert has_euler_path(g) is False
+        assert has_euler_circuit(g) is False
+        with pytest.raises(ValueError, match="no Euler path"):
+>           get_euler_start_vertex(g)
+
+tests\test_bva.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+graph = <networkx.classes.graph.Graph object at 0x0000015EBCD91160>
+
+    def get_euler_start_vertex(graph: nx.Graph) -> int:
+        """Return the starting vertex for Euler path traversal.
+    
+        - If 2 odd-degree vertices exist, return one of them.
+        - If 0 odd-degree vertices exist (circuit), return any vertex with edges.
+        - Raises ValueError if no Euler path exists.
+        """
+        if not has_euler_path(graph):
+>           raise ValueError("Graph does not have an Euler path")
+E           ValueError: Graph does not have an Euler path
+
+src\graph_utils.py:51: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <tests.test_bva.TestGraphUtilsBVA object at 0x0000015EBCDFED50>
+
+    def test_bva_zero_nodes(self):
+        """Boundary: 0 nodes -> No Euler path."""
+        g = nx.Graph()
+        assert has_euler_path(g) is False
+        assert has_euler_circuit(g) is False
+>       with pytest.raises(ValueError, match="no Euler path"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'no Euler path'
+E         Actual message: 'Graph does not have an Euler path'
+
+tests\test_bva.py:30: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_bva.py::TestGraphUtilsBVA::test_bva_zero_nodes - AssertionE...
+======================== 1 failed, 18 passed in 0.94s =========================
+[WARN] BVA tests failed!
+
+[2/4] Running Equivalence Partitioning Tests...
+============================= test session starts =============================
+platform win32 -- Python 3.14.2, pytest-9.0.2, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Nikita\Documents\╥хёЄшЁютър\lab1
+collecting ... collected 14 items
+
+tests/test_equivalence.py::TestGraphEquivalence::test_ep_valid_circuit_partition PASSED [  7%]
+tests/test_equivalence.py::TestGraphEquivalence::test_ep_valid_path_partition PASSED [ 14%]
+tests/test_equivalence.py::TestGraphEquivalence::test_ep_invalid_parity_partition PASSED [ 21%]
+tests/test_equivalence.py::TestGraphEquivalence::test_ep_invalid_disconnected_partition PASSED [ 28%]
+tests/test_equivalence.py::TestAlgorithmsEquivalence::test_ep_valid_circuit_execution[find_euler_path0] PASSED [ 35%]
+tests/test_equivalence.py::TestAlgorithmsEquivalence::test_ep_valid_circuit_execution[find_euler_path1] PASSED [ 42%]
+tests/test_equivalence.py::TestAlgorithmsEquivalence::test_ep_valid_path_execution[find_euler_path0] PASSED [ 50%]
+tests/test_equivalence.py::TestAlgorithmsEquivalence::test_ep_valid_path_execution[find_euler_path1] PASSED [ 57%]
+tests/test_equivalence.py::TestIOEquivalence::test_ep_valid_file_partition PASSED [ 64%]
+tests/test_equivalence.py::TestIOEquivalence::test_ep_invalid_type_partition PASSED [ 71%]
+tests/test_equivalence.py::TestIOEquivalence::test_ep_logical_invalid_partition PASSED [ 78%]
+tests/test_equivalence.py::TestConsoleEquivalence::test_ep_valid_input_class PASSED [ 85%]
+tests/test_equivalence.py::TestConsoleEquivalence::test_ep_invalid_string_class PASSED [ 92%]
+tests/test_equivalence.py::TestConsoleEquivalence::test_ep_invalid_negative_class PASSED [100%]
+
+============================= 14 passed in 0.80s ==============================
+
+[3/4] Running Statement Coverage Tests...
+============================= test session starts =============================
+platform win32 -- Python 3.14.2, pytest-9.0.2, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Nikita\Documents\╥хёЄшЁютър\lab1
+collecting ... collected 9 items
+
+tests/test_statement.py::TestMainStatement::test_stmt_main_flow_full PASSED [ 11%]
+tests/test_statement.py::TestMainStatement::test_stmt_main_invalid_choices PASSED [ 22%]
+tests/test_statement.py::TestMainStatement::test_stmt_input_json_helper PASSED [ 33%]
+tests/test_statement.py::TestGraphUtilsStatement::test_stmt_get_start_vertex_no_edges PASSED [ 44%]
+tests/test_statement.py::TestFleuryStatement::test_stmt_is_bridge_isolated PASSED [ 55%]
+tests/test_statement.py::TestFleuryStatement::test_stmt_fleury_cleanup_node PASSED [ 66%]
+tests/test_statement.py::TestConsoleInputStatement::test_stmt_parse_int_empty PASSED [ 77%]
+tests/test_statement.py::TestConsoleInputStatement::test_stmt_parse_positive_fail PASSED [ 88%]
+tests/test_statement.py::TestConsoleInputStatement::test_stmt_parse_non_negative_fail PASSED [100%]
+
+============================== 9 passed in 0.72s ==============================
+
+[4/4] Running Branch Coverage Tests...
+============================= test session starts =============================
+platform win32 -- Python 3.14.2, pytest-9.0.2, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Nikita\Documents\╥хёЄшЁютър\lab1
+collecting ... collected 14 items
+
+tests/test_branch.py::TestGraphUtilsBranch::test_branch_has_path_no_edges PASSED [  7%]
+tests/test_branch.py::TestGraphUtilsBranch::test_branch_has_path_has_edges_connected PASSED [ 14%]
+tests/test_branch.py::TestGraphUtilsBranch::test_branch_has_path_disconnected PASSED [ 21%]
+tests/test_branch.py::TestGraphUtilsBranch::test_branch_odd_count_0 PASSED [ 28%]
+tests/test_branch.py::TestGraphUtilsBranch::test_branch_odd_count_2 PASSED [ 35%]
+tests/test_branch.py::TestGraphUtilsBranch::test_branch_odd_count_4 PASSED [ 42%]
+tests/test_branch.py::TestFleuryBranch::test_branch_is_bridge_no_edges PASSED [ 50%]
+tests/test_branch.py::TestFleuryBranch::test_branch_is_bridge_node_isolated PASSED [ 57%]
+tests/test_branch.py::TestFleuryBranch::test_branch_is_bridge_connected_subgraph PASSED [ 64%]
+tests/test_branch.py::TestFleuryBranch::test_branch_is_bridge_disconnected_subgraph PASSED [ 71%]
+tests/test_branch.py::TestIOHandlerBranch::test_branch_json_keys_missing_vertices PASSED [ 78%]
+tests/test_branch.py::TestIOHandlerBranch::test_branch_json_keys_missing_edges PASSED [ 85%]
+tests/test_branch.py::TestIOHandlerBranch::test_branch_vertices_not_list PASSED [ 92%]
+tests/test_branch.py::TestIOHandlerBranch::test_branch_save_parent_mkdir PASSED [100%]
+
+============================= 14 passed in 0.79s ==============================
+
+==========================================
+All tests executed.
+==========================================
+Для продолжения нажмите любую клавишу . . . 
+Завершить выполнение пакетного файла [Y(да)/N(нет)]? ^C

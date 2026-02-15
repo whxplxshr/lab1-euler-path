@@ -131,3 +131,57 @@ If you choose `y`, enter the output file path. The result is saved as:
 - **Bad JSON** → `ValueError: Invalid JSON syntax: ...`
 - **Missing keys** → `ValueError: Missing required key: 'vertices'`
 - **Invalid vertex** → `ValueError: Each vertex must be an integer`
+
+---
+
+## Running Automated Tests
+
+To run the tests, use `pytest` from the project root directory.
+
+**Important:** Always execute tests as a module (`python -m pytest`) to ensure the `src` package is correctly found.
+
+### 1. Run All Tests
+
+```powershell
+python -m pytest tests/ -v
+```
+
+> **Note:** If `tests/test_branch.py` fails when running the full suite, run it individually (see below).
+
+### 2. Run Specific Test Suites
+
+**Boundary Value Analysis (BVA)**
+```powershell
+python -m pytest tests/test_bva.py -v
+```
+
+**Equivalence Partitioning (EP)**
+```powershell
+python -m pytest tests/test_equivalence.py -v
+```
+
+**Statement Coverage**
+```powershell
+python -m pytest tests/test_statement.py -v
+```
+
+**Branch Coverage**
+```powershell
+python -m pytest tests/test_branch.py -v
+```
+
+### 3. Check Code Coverage
+
+To see the coverage report (requires `pytest-cov`):
+
+```powershell
+python -m pytest tests/ --cov=src --cov-branch --cov-report=term-missing
+```
+
+### Troubleshooting
+
+- **`ModuleNotFoundError: No module named 'src'`**:
+  Make sure you are running the command from the root folder (`lab1`) and using `python -m pytest ...`, NOT just `pytest ...` or running the file directly.
+
+- **Tests fail with `Exit code: 1`**:
+  Read the output to see which test failed. If `test_branch` fails in a full run, run it separately.

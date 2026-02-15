@@ -163,7 +163,8 @@ No Euler path:       ValueError raised   ✅ error handling
 
 ## Epic 5: Mutation Testing
 
-**Status:** 🔲 Not started
+**Status:** � In Progress
+**Date:** 2026-02-15
 
 ### Scope
 

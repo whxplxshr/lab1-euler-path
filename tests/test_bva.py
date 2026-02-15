@@ -27,7 +27,7 @@ class TestGraphUtilsBVA:
         g = nx.Graph()
         assert has_euler_path(g) is False
         assert has_euler_circuit(g) is False
-        with pytest.raises(ValueError, match="no Euler path"):
+        with pytest.raises(ValueError, match="not have an Euler path"):
             get_euler_start_vertex(g)
 
     def test_bva_one_node_zero_edges(self):
