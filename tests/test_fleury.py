@@ -251,3 +251,98 @@ class TestFleuryImmutability:
         find_euler_path(g)
         assert set(g.nodes()) == original_nodes
         assert set(g.edges()) == original_edges
+
+
+# ---------------------------------------------------------------------------
+# Mutation-targeted tests (kill surviving MutPy mutants)
+# ---------------------------------------------------------------------------
+class TestFleuryMutationTargets:
+    """Tests designed to kill specific surviving MutPy mutants.
+
+    Each test documents the mutant it targets, identified by
+    mutation operator and line-level description.
+    """
+
+    def test_single_neighbor_branch(self):
+        """Kill mutant #15/#28 (COI/ROR): len(neighbors)==1 inversion.
+
+        In a chain 1-2-3, vertex 2 always has exactly 1 neighbor after
+        removing the first edge. If the single-neighbor branch is swapped,
+        the algorithm enters multi-neighbor logic for a 1-neighbor case.
+        """
+        g = nx.Graph([(1, 2), (2, 3)])
+        path = find_euler_path(g)
+        assert _is_valid_euler_path(g, path)
+        assert len(path) == 3
+
+    def test_bridge_or_condition_in_is_bridge(self):
+        """Kill mutant #21 (LCR): `or` → `and` in _is_bridge.
+
+        In chain 1-2-3, removing edge (1,2) makes vertex 1 isolated
+        while vertex 2 still has edges. With `or`, the elif triggers
+        (u not in vertices_with_edges). With `and`, both would need
+        to be missing, so it falls through to the else branch.
+        """
+        g = nx.Graph([(1, 2), (2, 3)])
+        # Edge (1,2) is a bridge
+        assert _is_bridge(g, 1, 2) is True
+        # Verify graph is restored after bridge check
+        assert g.has_edge(1, 2)
+
+    def test_bridge_check_one_vertex_isolated(self):
+        """Kill mutant #21 (LCR): specifically test case where exactly
+        one vertex becomes isolated after edge removal.
+
+        Graph: 1-2-3-4 (chain). Remove edge (1,2) → vertex 1 has
+        degree 0, vertex 2 still has edges. The `or` detects this,
+        while `and` would miss it.
+        """
+        g = nx.Graph([(1, 2), (2, 3), (3, 4)])
+        result = _is_bridge(g, 1, 2)
+        # After removing (1,2), vertex 1 is isolated, vertices 2,3,4 still connected
+        # _is_bridge returns True (it disconnected the graph)
+        assert result is True
+        assert g.has_edge(1, 2)
+
+    def test_fleury_on_diamond_with_tail(self):
+        """Kill mutant #17 (COI): next_vertex is None fallback.
+
+        Diamond 1-2-3 with edges 1-3 plus tail 3-4.
+        Multiple neighbors = bridge detection + fallback logic.
+        """
+        g = nx.Graph([(1, 2), (2, 3), (1, 3), (3, 4)])
+        path = find_euler_path(g)
+        assert _is_valid_euler_path(g, path)
+
+    def test_cleanup_logic_on_pentagon(self):
+        """Kill mutant #30 (ROR): current==next_vertex cleanup check.
+
+        Pentagon graph exercises node removal cleanup at each step.
+        """
+        g = nx.Graph([(1, 2), (2, 3), (3, 4), (4, 5), (5, 1)])
+        path = find_euler_path(g)
+        assert _is_valid_euler_path(g, path)
+        assert path[0] == path[-1]
+
+    def test_all_bridges_graph(self):
+        """Kill mutant #1 (BCR): break→continue in `if not neighbors`.
+
+        Star graph: 1 connected to 2, 3, 4 each with one extra edge.
+        After processing, isolated vertices may trigger infinite loop
+        if `break` is replaced by `continue`.
+        """
+        g = nx.Graph([(1, 2), (2, 3), (3, 4), (4, 1)])
+        path = find_euler_path(g)
+        assert _is_valid_euler_path(g, path)
+
+    def test_complex_bridge_multi_component(self):
+        """Kill mutants related to bridge detection with complex topology.
+
+        Bowtie graph: triangles 1-2-3 and 3-4-5 sharing vertex 3.
+        Vertex 3 has degree 4 (even), all others degree 2. Euler circuit.
+        """
+        g = nx.Graph([(1, 2), (2, 3), (3, 1), (3, 4), (4, 5), (5, 3)])
+        path = find_euler_path(g)
+        assert _is_valid_euler_path(g, path)
+        assert path[0] == path[-1]
+

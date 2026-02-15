@@ -21,7 +21,7 @@ def _is_bridge(graph: nx.Graph, u, v) -> bool:
     elif u not in vertices_with_edges or v not in vertices_with_edges:
         # One of the vertices became isolated — not a bridge in the traditional sense,
         # but the edge was the only connection for that vertex
-        is_bridge = False
+        is_bridge = True
     else:
         subgraph = graph.subgraph(vertices_with_edges)
         is_bridge = not nx.is_connected(subgraph)

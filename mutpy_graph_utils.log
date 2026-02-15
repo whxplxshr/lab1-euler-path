@@ -1,0 +1,37 @@
+[*] Start mutation process:
+   - targets: src.graph_utils
+   - tests: tests.test_graph_utils, tests.test_bva
+[*] 32 tests passed:
+   - tests.test_graph_utils [0.34684 s]
+   - tests.test_bva [0.41647 s]
+[*] Start mutants generation and execution:
+   - [#   1] AOR src.graph_utils: [0.50269 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_triangle_min_circuit
+   - [#   2] AOR src.graph_utils: [0.31345 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_triangle_min_circuit
+   - [#   3] AOR src.graph_utils: [0.44813 s] survived
+   - [#   4] COD src.graph_utils: [0.28506 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_two_nodes_one_edge
+   - [#   5] COD src.graph_utils: [0.29034 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_two_nodes_one_edge
+   - [#   6] COD src.graph_utils: [0.28656 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_zero_nodes
+   - [#   7] COD src.graph_utils: [0.29374 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_zero_nodes
+   - [#   8] COI src.graph_utils: [0.28041 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_two_nodes_one_edge
+   - [#   9] COI src.graph_utils: [0.27826 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_two_nodes_one_edge
+   - [#  10] COI src.graph_utils: [0.29871 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_two_nodes_one_edge
+   - [#  11] COI src.graph_utils: [0.26024 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_two_nodes_one_edge
+   - [#  12] COI src.graph_utils: [0.26394 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_zero_nodes
+   - [#  13] COI src.graph_utils: [0.27319 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_zero_nodes
+   - [#  14] COI src.graph_utils: [0.28550 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_triangle_min_circuit
+   - [#  15] COI src.graph_utils: [0.27757 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_triangle_min_circuit
+   - [#  16] ROR src.graph_utils: [0.26150 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_two_nodes_one_edge
+   - [#  17] ROR src.graph_utils: [0.33862 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_two_nodes_one_edge
+   - [#  18] ROR src.graph_utils: [0.46984 s] survived
+   - [#  19] ROR src.graph_utils: [0.27134 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_triangle_min_circuit
+   - [#  20] ROR src.graph_utils: [0.30268 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_two_nodes_one_edge
+   - [#  21] ROR src.graph_utils: [0.27890 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_two_nodes_one_edge
+   - [#  22] ROR src.graph_utils: [0.46826 s] killed by tests/test_graph_utils.py::TestGetEulerStartVertex::test_start_vertex_from_odd_degree
+   - [#  23] ROR src.graph_utils: [0.30833 s] killed by tests/test_bva.py::TestGraphUtilsBVA::test_bva_triangle_min_circuit
+   - [#  24] ROR src.graph_utils: [0.47537 s] survived
+[*] Mutation score [9.51343 s]: 87.5%
+   - all: 24
+   - killed: 21 (87.5%)
+   - survived: 3 (12.5%)
+   - incompetent: 0 (0.0%)
+   - timeout: 0 (0.0%)

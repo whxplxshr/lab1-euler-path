@@ -141,6 +141,19 @@ class TestLoadGraphFromJson:
         with pytest.raises(ValueError, match="Edge 0 vertices must be integers"):
             load_graph_from_json(str(filepath))
 
+    def test_edge_one_int_one_string(self, tmp_path):
+        """Raise ValueError when only one edge vertex is non-integer.
+
+        Mutation target: kills LCR mutant that changes `or` to `and`
+        in the edge vertex type check (both must fail for `and` to trigger).
+        """
+        data = {"vertices": [1, 2], "edges": [[1, "x"]]}
+        filepath = tmp_path / "mixed_edge.json"
+        filepath.write_text(json.dumps(data), encoding="utf-8")
+
+        with pytest.raises(ValueError, match="Edge 0 vertices must be integers"):
+            load_graph_from_json(str(filepath))
+
 
 class TestSaveResultToJson:
     """Tests for save_result_to_json."""

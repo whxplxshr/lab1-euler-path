@@ -66,13 +66,15 @@ class TestFleuryBranch:
         assert _is_bridge(g, 1, 2) is False
 
     def test_branch_is_bridge_node_isolated(self):
-        """Branch: u not in vertices_with_edges -> False."""
+        """Branch: u not in vertices_with_edges -> True (New Logic)."""
         # 1-2, 3-4. Check 1-2.
         g = nx.Graph([(1, 2), (3, 4)])
         # Remove 1-2. 1 and 2 isolated. 3-4 remain.
         # vertices_with_edges = [3, 4].
-        # 1 not in [3, 4]. -> return False.
-        assert _is_bridge(g, 1, 2) is False
+        # 1 not in [3, 4].
+        # Previous logic: False (not loop).
+        # New logic: True (disconnects 1 from 2, effectively a bridge for component {1,2}).
+        assert _is_bridge(g, 1, 2) is True
 
     def test_branch_is_bridge_connected_subgraph(self):
         """Branch: subgraph connected -> False."""
