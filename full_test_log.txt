@@ -1,0 +1,199 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.2, pytest-9.0.2, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Nikita\Documents\Тестировка\lab1
+collecting ... collected 142 items
+
+tests/test_branch.py::TestGraphUtilsBranch::test_branch_has_path_no_edges PASSED [  0%]
+tests/test_branch.py::TestGraphUtilsBranch::test_branch_has_path_has_edges_connected PASSED [  1%]
+tests/test_branch.py::TestGraphUtilsBranch::test_branch_has_path_disconnected PASSED [  2%]
+tests/test_branch.py::TestGraphUtilsBranch::test_branch_odd_count_0 PASSED [  2%]
+tests/test_branch.py::TestGraphUtilsBranch::test_branch_odd_count_2 PASSED [  3%]
+tests/test_branch.py::TestGraphUtilsBranch::test_branch_odd_count_4 PASSED [  4%]
+tests/test_branch.py::TestFleuryBranch::test_branch_is_bridge_no_edges PASSED [  4%]
+tests/test_branch.py::TestFleuryBranch::test_branch_is_bridge_node_isolated PASSED [  5%]
+tests/test_branch.py::TestFleuryBranch::test_branch_is_bridge_connected_subgraph PASSED [  6%]
+tests/test_branch.py::TestFleuryBranch::test_branch_is_bridge_disconnected_subgraph PASSED [  7%]
+tests/test_branch.py::TestIOHandlerBranch::test_branch_json_keys_missing_vertices PASSED [  7%]
+tests/test_branch.py::TestIOHandlerBranch::test_branch_json_keys_missing_edges PASSED [  8%]
+tests/test_branch.py::TestIOHandlerBranch::test_branch_vertices_not_list PASSED [  9%]
+tests/test_branch.py::TestIOHandlerBranch::test_branch_save_parent_mkdir PASSED [  9%]
+tests/test_bva.py::TestGraphUtilsBVA::test_bva_zero_nodes FAILED         [ 10%]
+tests/test_bva.py::TestGraphUtilsBVA::test_bva_one_node_zero_edges PASSED [ 11%]
+tests/test_bva.py::TestGraphUtilsBVA::test_bva_two_nodes_one_edge PASSED [ 11%]
+tests/test_bva.py::TestGraphUtilsBVA::test_bva_triangle_min_circuit PASSED [ 12%]
+tests/test_bva.py::TestGraphUtilsBVA::test_bva_boundary_odd_vertices_4 PASSED [ 13%]
+tests/test_bva.py::TestAlgorithmsBVA::test_bva_min_path_1_edge[hierholzer] PASSED [ 14%]
+tests/test_bva.py::TestAlgorithmsBVA::test_bva_min_path_1_edge[fleury] PASSED [ 14%]
+tests/test_bva.py::TestAlgorithmsBVA::test_bva_min_circuit_triangle[hierholzer] PASSED [ 15%]
+tests/test_bva.py::TestAlgorithmsBVA::test_bva_min_circuit_triangle[fleury] PASSED [ 16%]
+tests/test_bva.py::TestAlgorithmsBVA::test_bva_disconnected_with_edges[hierholzer] PASSED [ 16%]
+tests/test_bva.py::TestAlgorithmsBVA::test_bva_disconnected_with_edges[fleury] PASSED [ 17%]
+tests/test_bva.py::TestIOHandlerBVA::test_bva_load_empty_json_object PASSED [ 18%]
+tests/test_bva.py::TestIOHandlerBVA::test_bva_load_empty_lists PASSED    [ 19%]
+tests/test_bva.py::TestIOHandlerBVA::test_bva_load_single_vertex_no_edges PASSED [ 19%]
+tests/test_bva.py::TestIOHandlerBVA::test_bva_save_single_node_path PASSED [ 20%]
+tests/test_bva.py::TestIOHandlerBVA::test_bva_save_empty_algo_name PASSED [ 21%]
+tests/test_bva.py::TestConsoleInputBVA::test_bva_zero_vertices PASSED    [ 21%]
+tests/test_bva.py::TestConsoleInputBVA::test_bva_one_vertex_zero_edges PASSED [ 22%]
+tests/test_bva.py::TestConsoleInputBVA::test_bva_min_valid_edge_input PASSED [ 23%]
+tests/test_console_input.py::TestReadGraphFromConsole::test_valid_triangle_input PASSED [ 23%]
+tests/test_console_input.py::TestReadGraphFromConsole::test_valid_single_edge PASSED [ 24%]
+tests/test_console_input.py::TestReadGraphFromConsole::test_vertices_with_no_edges PASSED [ 25%]
+tests/test_console_input.py::TestReadGraphFromConsole::test_invalid_vertex_count_not_integer PASSED [ 26%]
+tests/test_console_input.py::TestReadGraphFromConsole::test_invalid_vertex_count_zero PASSED [ 26%]
+tests/test_console_input.py::TestReadGraphFromConsole::test_invalid_vertex_count_negative PASSED [ 27%]
+tests/test_console_input.py::TestReadGraphFromConsole::test_invalid_vertex_label_not_integer PASSED [ 28%]
+tests/test_console_input.py::TestReadGraphFromConsole::test_duplicate_vertex_label PASSED [ 28%]
+tests/test_console_input.py::TestReadGraphFromConsole::test_invalid_edge_format PASSED [ 29%]
+tests/test_console_input.py::TestReadGraphFromConsole::test_edge_references_unknown_vertex PASSED [ 30%]
+tests/test_console_input.py::TestReadGraphFromConsole::test_invalid_edge_count_not_integer PASSED [ 30%]
+tests/test_console_input.py::TestReadGraphFromConsole::test_negative_edge_count PASSED [ 31%]
+tests/test_console_input.py::TestReadGraphFromConsole::test_empty_vertex_count PASSED [ 32%]
+tests/test_equivalence.py::TestGraphEquivalence::test_ep_valid_circuit_partition PASSED [ 33%]
+tests/test_equivalence.py::TestGraphEquivalence::test_ep_valid_path_partition PASSED [ 33%]
+tests/test_equivalence.py::TestGraphEquivalence::test_ep_invalid_parity_partition PASSED [ 34%]
+tests/test_equivalence.py::TestGraphEquivalence::test_ep_invalid_disconnected_partition PASSED [ 35%]
+tests/test_equivalence.py::TestAlgorithmsEquivalence::test_ep_valid_circuit_execution[find_euler_path0] PASSED [ 35%]
+tests/test_equivalence.py::TestAlgorithmsEquivalence::test_ep_valid_circuit_execution[find_euler_path1] PASSED [ 36%]
+tests/test_equivalence.py::TestAlgorithmsEquivalence::test_ep_valid_path_execution[find_euler_path0] PASSED [ 37%]
+tests/test_equivalence.py::TestAlgorithmsEquivalence::test_ep_valid_path_execution[find_euler_path1] PASSED [ 38%]
+tests/test_equivalence.py::TestIOEquivalence::test_ep_valid_file_partition PASSED [ 38%]
+tests/test_equivalence.py::TestIOEquivalence::test_ep_invalid_type_partition PASSED [ 39%]
+tests/test_equivalence.py::TestIOEquivalence::test_ep_logical_invalid_partition PASSED [ 40%]
+tests/test_equivalence.py::TestConsoleEquivalence::test_ep_valid_input_class PASSED [ 40%]
+tests/test_equivalence.py::TestConsoleEquivalence::test_ep_invalid_string_class PASSED [ 41%]
+tests/test_equivalence.py::TestConsoleEquivalence::test_ep_invalid_negative_class PASSED [ 42%]
+tests/test_fleury.py::TestFleuryCircuit::test_triangle_circuit PASSED    [ 42%]
+tests/test_fleury.py::TestFleuryCircuit::test_square_circuit PASSED      [ 43%]
+tests/test_fleury.py::TestFleuryCircuit::test_figure_eight_circuit PASSED [ 44%]
+tests/test_fleury.py::TestFleuryCircuit::test_hexagon_circuit PASSED     [ 45%]
+tests/test_fleury.py::TestFleuryCircuit::test_octagon_circuit PASSED     [ 45%]
+tests/test_fleury.py::TestFleuryPath::test_single_edge_path PASSED       [ 46%]
+tests/test_fleury.py::TestFleuryPath::test_linear_chain_path PASSED      [ 47%]
+tests/test_fleury.py::TestFleuryPath::test_four_node_with_two_odd_vertices PASSED [ 47%]
+tests/test_fleury.py::TestFleuryPath::test_longer_chain_five_nodes PASSED [ 48%]
+tests/test_fleury.py::TestFleuryPath::test_triangle_with_tail PASSED     [ 49%]
+tests/test_fleury.py::TestFleuryNegative::test_disconnected_graph PASSED [ 50%]
+tests/test_fleury.py::TestFleuryNegative::test_complete_k4_four_odd_vertices PASSED [ 50%]
+tests/test_fleury.py::TestFleuryNegative::test_empty_graph_no_edges PASSED [ 51%]
+tests/test_fleury.py::TestFleuryNegative::test_single_vertex_no_edges PASSED [ 52%]
+tests/test_fleury.py::TestFleuryBridgeLogic::test_is_bridge_on_longer_chain PASSED [ 52%]
+tests/test_fleury.py::TestFleuryBridgeLogic::test_is_not_bridge_in_triangle PASSED [ 53%]
+tests/test_fleury.py::TestFleuryBridgeLogic::test_figure_eight_bridge_at_center PASSED [ 54%]
+tests/test_fleury.py::TestFleuryBridgeLogic::test_lollipop_graph PASSED  [ 54%]
+tests/test_fleury.py::TestFleuryBridgeLogic::test_bridge_is_only_option PASSED [ 55%]
+tests/test_fleury.py::TestFleuryLargeGraphs::test_large_ring_circuit_20_nodes PASSED [ 56%]
+tests/test_fleury.py::TestFleuryLargeGraphs::test_large_chain_path_10_nodes PASSED [ 57%]
+tests/test_fleury.py::TestFleuryImmutability::test_does_not_mutate_circuit_graph PASSED [ 57%]
+tests/test_fleury.py::TestFleuryImmutability::test_does_not_mutate_path_graph PASSED [ 58%]
+tests/test_graph_utils.py::TestHasEulerPath::test_triangle_has_euler_path PASSED [ 59%]
+tests/test_graph_utils.py::TestHasEulerPath::test_two_odd_vertices_has_euler_path PASSED [ 59%]
+tests/test_graph_utils.py::TestHasEulerPath::test_four_odd_vertices_no_euler_path PASSED [ 60%]
+tests/test_graph_utils.py::TestHasEulerPath::test_empty_graph_no_euler_path PASSED [ 61%]
+tests/test_graph_utils.py::TestHasEulerPath::test_single_vertex_no_edges PASSED [ 61%]
+tests/test_graph_utils.py::TestHasEulerPath::test_disconnected_graph_no_euler_path PASSED [ 62%]
+tests/test_graph_utils.py::TestHasEulerPath::test_single_edge PASSED     [ 63%]
+tests/test_graph_utils.py::TestHasEulerCircuit::test_triangle_has_euler_circuit PASSED [ 64%]
+tests/test_graph_utils.py::TestHasEulerCircuit::test_path_graph_no_euler_circuit PASSED [ 64%]
+tests/test_graph_utils.py::TestHasEulerCircuit::test_square_has_euler_circuit PASSED [ 65%]
+tests/test_graph_utils.py::TestGetEulerStartVertex::test_start_vertex_from_odd_degree PASSED [ 66%]
+tests/test_graph_utils.py::TestGetEulerStartVertex::test_start_vertex_circuit PASSED [ 66%]
+tests/test_graph_utils.py::TestGetEulerStartVertex::test_raises_on_no_euler_path PASSED [ 67%]
+tests/test_hierholzer.py::TestHierholzerCircuit::test_triangle_circuit PASSED [ 68%]
+tests/test_hierholzer.py::TestHierholzerCircuit::test_square_circuit PASSED [ 69%]
+tests/test_hierholzer.py::TestHierholzerCircuit::test_figure_eight_circuit PASSED [ 69%]
+tests/test_hierholzer.py::TestHierholzerCircuit::test_hexagon_circuit PASSED [ 70%]
+tests/test_hierholzer.py::TestHierholzerCircuit::test_k5_complete_circuit PASSED [ 71%]
+tests/test_hierholzer.py::TestHierholzerPath::test_single_edge_path PASSED [ 71%]
+tests/test_hierholzer.py::TestHierholzerPath::test_linear_chain_path PASSED [ 72%]
+tests/test_hierholzer.py::TestHierholzerPath::test_four_node_with_two_odd_vertices PASSED [ 73%]
+tests/test_hierholzer.py::TestHierholzerPath::test_longer_chain_five_nodes PASSED [ 73%]
+tests/test_hierholzer.py::TestHierholzerPath::test_triangle_with_tail PASSED [ 74%]
+tests/test_hierholzer.py::TestHierholzerNegative::test_disconnected_graph PASSED [ 75%]
+tests/test_hierholzer.py::TestHierholzerNegative::test_complete_k4_four_odd_vertices PASSED [ 76%]
+tests/test_hierholzer.py::TestHierholzerNegative::test_empty_graph_no_edges PASSED [ 76%]
+tests/test_hierholzer.py::TestHierholzerNegative::test_single_vertex_no_edges PASSED [ 77%]
+tests/test_hierholzer.py::TestHierholzerLargeGraphs::test_large_ring_circuit_20_nodes PASSED [ 78%]
+tests/test_hierholzer.py::TestHierholzerLargeGraphs::test_large_chain_path_10_nodes PASSED [ 78%]
+tests/test_hierholzer.py::TestHierholzerLargeGraphs::test_double_ring_circuit PASSED [ 79%]
+tests/test_hierholzer.py::TestHierholzerImmutability::test_does_not_mutate_circuit_graph PASSED [ 80%]
+tests/test_hierholzer.py::TestHierholzerImmutability::test_does_not_mutate_path_graph PASSED [ 80%]
+tests/test_io_handler.py::TestLoadGraphFromJson::test_load_valid_triangle PASSED [ 81%]
+tests/test_io_handler.py::TestLoadGraphFromJson::test_load_valid_path_graph PASSED [ 82%]
+tests/test_io_handler.py::TestLoadGraphFromJson::test_load_vertices_only_no_edges PASSED [ 83%]
+tests/test_io_handler.py::TestLoadGraphFromJson::test_file_not_found PASSED [ 83%]
+tests/test_io_handler.py::TestLoadGraphFromJson::test_invalid_json_syntax PASSED [ 84%]
+tests/test_io_handler.py::TestLoadGraphFromJson::test_missing_vertices_key PASSED [ 85%]
+tests/test_io_handler.py::TestLoadGraphFromJson::test_missing_edges_key PASSED [ 85%]
+tests/test_io_handler.py::TestLoadGraphFromJson::test_vertices_not_list PASSED [ 86%]
+tests/test_io_handler.py::TestLoadGraphFromJson::test_edges_not_list PASSED [ 87%]
+tests/test_io_handler.py::TestLoadGraphFromJson::test_vertex_not_integer PASSED [ 88%]
+tests/test_io_handler.py::TestLoadGraphFromJson::test_edge_wrong_length PASSED [ 88%]
+tests/test_io_handler.py::TestLoadGraphFromJson::test_edge_references_unknown_vertex PASSED [ 89%]
+tests/test_io_handler.py::TestLoadGraphFromJson::test_json_root_not_object PASSED [ 90%]
+tests/test_io_handler.py::TestLoadGraphFromJson::test_edge_vertex_not_integer PASSED [ 90%]
+tests/test_io_handler.py::TestSaveResultToJson::test_save_valid_result PASSED [ 91%]
+tests/test_io_handler.py::TestSaveResultToJson::test_save_creates_parent_dirs PASSED [ 92%]
+tests/test_io_handler.py::TestSaveResultToJson::test_save_empty_path_raises PASSED [ 92%]
+tests/test_io_handler.py::TestSaveResultToJson::test_save_empty_algorithm_raises PASSED [ 93%]
+tests/test_statement.py::TestMainStatement::test_stmt_main_flow_full PASSED [ 94%]
+tests/test_statement.py::TestMainStatement::test_stmt_main_invalid_choices PASSED [ 95%]
+tests/test_statement.py::TestMainStatement::test_stmt_input_json_helper PASSED [ 95%]
+tests/test_statement.py::TestGraphUtilsStatement::test_stmt_get_start_vertex_no_edges PASSED [ 96%]
+tests/test_statement.py::TestFleuryStatement::test_stmt_is_bridge_isolated PASSED [ 97%]
+tests/test_statement.py::TestFleuryStatement::test_stmt_fleury_cleanup_node PASSED [ 97%]
+tests/test_statement.py::TestConsoleInputStatement::test_stmt_parse_int_empty PASSED [ 98%]
+tests/test_statement.py::TestConsoleInputStatement::test_stmt_parse_positive_fail PASSED [ 99%]
+tests/test_statement.py::TestConsoleInputStatement::test_stmt_parse_non_negative_fail PASSED [100%]
+
+================================== FAILURES ===================================
+____________________ TestGraphUtilsBVA.test_bva_zero_nodes ____________________
+
+self = <tests.test_bva.TestGraphUtilsBVA object at 0x000002163AA67D90>
+
+    def test_bva_zero_nodes(self):
+        """Boundary: 0 nodes -> No Euler path."""
+        g = nx.Graph()
+        assert has_euler_path(g) is False
+        assert has_euler_circuit(g) is False
+        with pytest.raises(ValueError, match="no Euler path"):
+>           get_euler_start_vertex(g)
+
+tests\test_bva.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+graph = <networkx.classes.graph.Graph object at 0x000002163AB1E9C0>
+
+    def get_euler_start_vertex(graph: nx.Graph) -> int:
+        """Return the starting vertex for Euler path traversal.
+    
+        - If 2 odd-degree vertices exist, return one of them.
+        - If 0 odd-degree vertices exist (circuit), return any vertex with edges.
+        - Raises ValueError if no Euler path exists.
+        """
+        if not has_euler_path(graph):
+>           raise ValueError("Graph does not have an Euler path")
+E           ValueError: Graph does not have an Euler path
+
+src\graph_utils.py:51: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <tests.test_bva.TestGraphUtilsBVA object at 0x000002163AA67D90>
+
+    def test_bva_zero_nodes(self):
+        """Boundary: 0 nodes -> No Euler path."""
+        g = nx.Graph()
+        assert has_euler_path(g) is False
+        assert has_euler_circuit(g) is False
+>       with pytest.raises(ValueError, match="no Euler path"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'no Euler path'
+E         Actual message: 'Graph does not have an Euler path'
+
+tests\test_bva.py:30: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_bva.py::TestGraphUtilsBVA::test_bva_zero_nodes - AssertionE...
+======================== 1 failed, 141 passed in 1.62s ========================

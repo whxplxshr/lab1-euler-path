@@ -1,0 +1,9 @@
+--- Debugging Triangle ---
+Before remove: edges=[(1, 2), (1, 3), (2, 3)]
+Vertices with edges: [1, 2, 3]
+Subgraph edges: [(1, 3), (2, 3)]
+Is Connected: True
+Function Result: False (Expected: False)
+
+--- Debugging Path ---
+Function Result: True (Expected: True)
