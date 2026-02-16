@@ -1,101 +1,101 @@
-# Project Context — Euler Path Console Application
+# Контекст Проекта — Консольное Приложение Поиска Эйлерова Пути
 
-## Purpose
+## Назначение
 
-This document serves as the **entry point** for any AI agent or developer starting work on this project. Before implementing any task, you **MUST** read all three documents in the `docs/` folder in the order described below.
-
----
-
-## Required Reading (3 Documents)
-
-### 1. `General.md` — Full Project Description
-
-**What it contains:**
-- Complete problem statement: building a Python console application for finding **Euler paths** in undirected graphs.
-- Two algorithms to implement: **Hierholzer's algorithm** (DFS-based) and **Fleury's algorithm** (edge-by-edge approach).
-- Input/output requirements: manual console input and JSON file loading; output to console and JSON file.
-- Development methodology: **TDD** (Test-Driven Development) with **PyTest**.
-- Testing techniques required: Boundary Value Analysis, Equivalence Partitioning, Statement Testing, Branch Testing.
-- Mutation testing requirements using **MutPy** (or Pitest equivalent).
-- Technology stack: Python, `networkx`, `json`, PyTest, MutPy.
-
-**What to take from it:**
-- Understand the full scope of functional and non-functional requirements.
-- Know which libraries and tools are mandatory.
-- Understand the testing methodology and quality metrics (LCC, MCC, CoveredCodeMSI).
+Этот документ служит **отправной точкой** для любого ИИ-агента или разработчика, начинающего работу над этим проектом. Перед выполнением любой задачи вы **ОБЯЗАНЫ** прочитать все три документа в папке `docs/` в порядке, описанном ниже.
 
 ---
 
-### 2. `Tasks.md` — Task Breakdown (Epics & Tasks)
+## Обязательно к прочтению (3 документа)
 
-**What it contains:**
-- A structured breakdown of the entire project into **5 Epics** with specific subtasks.
-- Each task is concrete and actionable, defining exactly **what** to implement and **which tool/library** to use.
+### 1. `General.md` — Полное описание проекта
 
-**Epic overview:**
+**Что содержит:**
+- Полная постановка задачи: создание консольного приложения на Python для поиска **Эйлеровых путей** в неориентированных графах.
+- Два алгоритма для реализации: **Алгоритм Хиерхольцера** (на основе DFS) и **Алгоритм Флёри** (подход «ребро за ребром»).
+- Требования к вводу/выводу: ручной ввод через консоль и загрузка JSON-файлов; вывод в консоль и JSON-файл.
+- Методология разработки: **TDD** (Разработка через тестирование) с использованием **PyTest**.
+- Требуемые техники тестирования: Анализ граничных значений (BVA), Разбиение на классы эквивалентности (Equivalence Partitioning), Тестирование операторов (Statement Testing), Тестирование ветвей (Branch Testing).
+- Требования к мутационному тестированию с использованием **MutPy** (или аналога Pitest).
+- Стек технологий: Python, `networkx`, `json`, PyTest, MutPy.
 
-| Epic | Title | Focus |
-|------|-------|-------|
-| 1 | Algorithm Design & Implementation | Hierholzer + Fleury algorithms using `networkx` |
-| 2 | User Interface | Manual input, JSON loading, result output |
-| 3 | Unit Testing (TDD) | PyTest tests for both algorithms |
-| 4 | Test Design Techniques | BVA, Branch Testing with PyTest |
-| 5 | Mutation Testing | MutPy/Pitest, mutation metrics analysis |
-
-**What to take from it:**
-- Use this as the **implementation roadmap** — tasks are ordered by dependency.
-- Each task specifies the exact deliverable and tooling.
-- When starting a new task, find the corresponding epic and task in this file first.
+**Что извлечь из этого:**
+- Понять полный объем функциональных и нефункциональных требований.
+- Знать, какие библиотеки и инструменты являются обязательными.
+- Понять методологию тестирования и метрики качества (LCC, MCC, CoveredCodeMSI).
 
 ---
 
-### 3. `project_context.md` — This File
+### 2. `Tasks.md` — Разбивка задач (Эпики и Задачи)
 
-**What it contains:**
-- Summary of each document's purpose and what information to extract.
-- The mandatory reading protocol for the agent.
-- Quick-reference table of all docs.
+**Что содержит:**
+- Структурированную разбивку всего проекта на **5 Эпиков** с конкретными подзадачами.
+- Каждая задача конкретна и выполнима, определяя точно, **что** нужно реализовать и **какой инструмент/библиотеку** использовать.
+
+**Обзор эпиков:**
+
+| Эпик | Название | Фокус |
+|------|----------|-------|
+| 1 | Проектирование и реализация алгоритмов | Алгоритмы Хиерхольцера + Флёри с использованием `networkx` |
+| 2 | Пользовательский интерфейс | Ручной ввод, загрузка JSON, вывод результатов |
+| 3 | Модульное тестирование (TDD) | Тесты PyTest для обоих алгоритмов |
+| 4 | Техники проектирования тестов | BVA, Branch Testing с PyTest |
+| 5 | Мутационное тестирование | MutPy/Pitest, анализ метрик мутаций |
+
+**Что извлечь из этого:**
+- Используйте это как **дорожную карту реализации** — задачи упорядочены по зависимостям.
+- Каждая задача определяет точный результат и инструментарий.
+- При начале новой задачи сначала найдите соответствующий эпик и задачу в этом файле.
 
 ---
 
-## Agent Protocol
+### 3. `project_context.md` — Этот файл
 
-> **CRITICAL RULE:** At the start of every new task or conversation about this project, the agent **MUST**:
+**Что содержит:**
+- Краткое описание назначения каждого документа и какую информацию извлекать.
+- Обязательный протокол чтения для агента.
+- Справочную таблицу всех документов.
+
+---
+
+## Протокол Агента
+
+> **КРИТИЧЕСКОЕ ПРАВИЛО:** В начале каждой новой задачи или обсуждения этого проекта агент **ОБЯЗАН**:
 >
-> 1. Read `docs/General.md` — to understand the full project context.
-> 2. Read `docs/Tasks.md` — to identify the current task and its requirements.
-> 3. Read `docs/project_context.md` — to confirm the reading protocol and document structure.
+> 1. Прочитать `docs/General.md` — чтобы понять полный контекст проекта.
+> 2. Прочитать `docs/Tasks.md` — чтобы определить текущую задачу и её требования.
+> 3. Прочитать `docs/project_context.md` — чтобы подтвердить протокол чтения и структуру документов.
 >
-> Only after reading all three documents should the agent proceed with any implementation.
+> Только после прочтения всех трех документов агент должен приступать к какой-либо реализации.
 
-## Immediate Verification Rule
+## Правило немедленной проверки
 
-Every task must be **verified immediately after implementation**. The agent must:
+Каждая задача должна быть **проверена немедленно после реализации**. Агент должен:
 
-1. **Algorithms** — prepare test data, run the algorithm, confirm correct output.
-2. **Data loading** — create sample JSON, load it, verify the graph structure.
-3. **Console UI** — run the app end-to-end and provide the user with exact commands to test manually.
-4. **Unit tests** — run `pytest` and show all tests passing.
-5. **Mutation testing** — run MutPy and present the mutation score.
+1. **Алгоритмы** — подготовить тестовые данные, запустить алгоритм, подтвердить правильный вывод.
+2. **Загрузка данных** — создать пример JSON, загрузить его, проверить структуру графа.
+3. **Консольный UI** — запустить приложение от начала до конца и предоставить пользователю точные команды для ручной проверки.
+4. **Модульные тесты** — запустить `pytest` и показать, что все тесты проходят.
+5. **Мутационное тестирование** — запустить MutPy и представить мутационный счет (score).
 
 > [!IMPORTANT]
-> A task is **NOT done** until it is proven to work. No exceptions.
+> Задача **НЕ выполнена**, пока не доказано, что она работает. Без исключений.
 
-## Technology Constraints
+## Технологические ограничения
 
-| Constraint | Value |
+| Ограничение | Значение |
 |-----------|-------|
-| Language | **Python** (strictly) |
-| Graph library | `networkx` |
-| Test framework | `PyTest` |
-| Mutation testing | `MutPy` |
-| Data format | JSON (input/output) |
-| Interface | Console (CLI) |
+| Язык | **Python** (строго) |
+| Библиотека графов | `networkx` |
+| Фреймворк тестов | `PyTest` |
+| Мутационное тестирование | `MutPy` |
+| Формат данных | JSON (ввод/вывод) |
+| Интерфейс | Консоль (CLI) |
 
-## Relevant Agent Skills
+## Релевантные навыки агента
 
-When implementing tasks for this project, the agent should load the following skills as needed:
+При реализации задач для этого проекта агент должен загружать следующие навыки по мере необходимости:
 
-- **`python-patterns`** — Python-specific design patterns, coding standards, and best practices.
-- **`clean-code`** — General code quality rules (always active per GEMINI.md Tier 0).
-- **`testing-patterns`** — Testing methodologies and patterns (for Epics 3–5).
+- **`python-patterns`** — Специфичные для Python паттерны проектирования, стандарты кодирования и лучшие практики.
+- **`clean-code`** — Общие правила качества кода (всегда активны согласно GEMINI.md Tier 0).
+- **`testing-patterns`** — Методологии и паттерны тестирования (для Эпиков 3–5).

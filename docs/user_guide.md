@@ -1,6 +1,6 @@
-# Euler Path Finder — User Guide
+# Поиск Эйлерова Пути — Руководство Пользователя
 
-## Launch
+## Запуск
 
 ```powershell
 cd c:\Users\Nikita\Documents\Тестировка\lab1
@@ -9,7 +9,7 @@ python -m src.main
 
 ---
 
-## Main Menu
+## Главное Меню
 
 ```
 --- Main Menu ---
@@ -18,17 +18,17 @@ python -m src.main
   0 — Exit
 ```
 
-- **1** — Enter a graph manually via console
-- **2** — Load a graph from a JSON file
-- **0** — Exit the application
+- **1** — Ввести граф вручную через консоль
+- **2** — Загрузить граф из JSON-файла
+- **0** — Выйти из приложения
 
-After processing, the app returns to the main menu.
+После выполнения приложение возвращается в главное меню.
 
 ---
 
-## Option 1: Manual Input
+## Опция 1: Ручной Ввод (Manual Input)
 
-The app asks step-by-step:
+Приложение запрашивает данные шаг за шагом:
 
 ```
 Enter the number of vertices: 3
@@ -41,23 +41,23 @@ Enter the number of edges: 3
   Edge 3 (u v): 3 1
 ```
 
-**Rules:**
-- Vertices are integers, entered one per line
-- Edges are entered as two integers separated by a space: `u v`
-- Both endpoints of each edge must be in the vertex list
-- Duplicate vertices are not allowed
+**Правила:**
+- Вершины — это целые числа, вводятся по одной в строке.
+- Рёбра вводятся как два целых числа, разделенных пробелом: `u v`.
+- Оба конца каждого ребра должны присутствовать в списке вершин.
+- Повторяющиеся вершины не допускаются.
 
 ---
 
-## Option 2: JSON File
+## Опция 2: JSON Файл
 
-Enter the full path to a `.json` file:
+Введите полный путь к файлу `.json`:
 
 ```
 Enter JSON file path: C:\Users\Nikita\Documents\Тестировка\lab1\samples\triangle.json
 ```
 
-**JSON format:**
+**Формат JSON:**
 ```json
 {
   "vertices": [1, 2, 3],
@@ -67,7 +67,7 @@ Enter JSON file path: C:\Users\Nikita\Documents\Тестировка\lab1\sample
 
 ---
 
-## Algorithm Selection
+## Выбор Алгоритма
 
 ```
 Choose algorithm:
@@ -75,14 +75,14 @@ Choose algorithm:
   2 — Fleury
 ```
 
-- **Hierholzer** — faster, uses iterative DFS with two stacks
-- **Fleury** — slower but intuitive, avoids bridges at each step
+- **Hierholzer** — более быстрый, использует итеративный DFS с двумя стеками.
+- **Fleury** — медленнее, но интуитивно понятен, избегает мостов на каждом шаге.
 
-Both produce the same Euler path for the same graph.
+Оба алгоритма выдают одинаковый Эйлеров путь для одного и того же графа.
 
 ---
 
-## Result Output
+## Вывод Результатов
 
 ```
 ==================================================
@@ -94,7 +94,7 @@ Both produce the same Euler path for the same graph.
 Save result to JSON file? (y/n):
 ```
 
-If you choose `y`, enter the output file path. The result is saved as:
+Если вы выберете `y`, введите путь к выходному файлу. Результат сохраняется в следующем виде:
 ```json
 {
   "algorithm": "hierholzer",
@@ -105,83 +105,83 @@ If you choose `y`, enter the output file path. The result is saved as:
 
 ---
 
-## Sample Files (`samples/`)
+## Примеры Файлов (`samples/`)
 
-| File | Type | Description |
-|------|------|-------------|
-| `single_edge.json` | ✅ Path | 2 vertices, 1 edge — minimal graph |
-| `simple_path.json` | ✅ Path | 3 vertices in a line (1-2-3) |
-| `triangle.json` | ✅ Circuit | 3 vertices, all connected |
-| `square_circuit.json` | ✅ Circuit | 4-vertex ring |
-| `path_graph.json` | ✅ Path | 4 vertices, 2 odd-degree |
-| `chain_custom_labels.json` | ✅ Path | 5 vertices (10,20,30,40,50) in a line |
-| `pentagon_with_chords.json` | ✅ Path | 5-vertex pentagon + 2 chords |
-| `two_triangles_circuit.json` | ✅ Circuit | Two triangles sharing vertex 3 |
-| `star_cycle_circuit.json` | ✅ Circuit | Star center with outer cycle |
-| `large_circuit.json` | ✅ Circuit | 7 vertices, ring + cross-edges |
-| `disconnected_no_path.json` | ❌ Error | 2 separate edges — no Euler path |
-| `complete_k4_no_path.json` | ❌ Error | K₄ — all vertices odd degree |
-
----
-
-## Error Cases
-
-- **No Euler path** → `ValueError: Graph does not have an Euler path`
-- **File not found** → `FileNotFoundError: File not found: ...`
-- **Bad JSON** → `ValueError: Invalid JSON syntax: ...`
-- **Missing keys** → `ValueError: Missing required key: 'vertices'`
-- **Invalid vertex** → `ValueError: Each vertex must be an integer`
+| Файл | Тип | Описание |
+|------|-----|----------|
+| `single_edge.json` | ✅ Путь | 2 вершины, 1 ребро — минимальный граф |
+| `simple_path.json` | ✅ Путь | 3 вершины в линию (1-2-3) |
+| `triangle.json` | ✅ Цикл | 3 вершины, все связаны (треугольник) |
+| `square_circuit.json` | ✅ Цикл | 4 вершины, кольцо (квадрат) |
+| `path_graph.json` | ✅ Путь | 4 вершины, 2 нечетной степени |
+| `chain_custom_labels.json` | ✅ Путь | 5 вершин (10,20,30,40,50) в линию |
+| `pentagon_with_chords.json` | ✅ Путь | 5-вершинный пятиугольник + 2 хорды |
+| `two_triangles_circuit.json` | ✅ Цикл | Два треугольника с общей вершиной 3 |
+| `star_cycle_circuit.json` | ✅ Цикл | Центр звезды с внешним кольцом |
+| `large_circuit.json` | ✅ Цикл | 7 вершин, кольцо + перекрестные ребра |
+| `disconnected_no_path.json` | ❌ Ошибка | 2 отдельных ребра — нет Эйлерова пути |
+| `complete_k4_no_path.json` | ❌ Ошибка | K₄ — все вершины нечетной степени |
 
 ---
 
-## Running Automated Tests
+## Случаи Ошибок
 
-To run the tests, use `pytest` from the project root directory.
+- **Нет Эйлерова пути** → `ValueError: Graph does not have an Euler path`
+- **Файл не найден** → `FileNotFoundError: File not found: ...`
+- **Некорректный JSON** → `ValueError: Invalid JSON syntax: ...`
+- **Отсутствуют ключи** → `ValueError: Missing required key: 'vertices'`
+- **Неверная вершина** → `ValueError: Each vertex must be an integer`
 
-**Important:** Always execute tests as a module (`python -m pytest`) to ensure the `src` package is correctly found.
+---
 
-### 1. Run All Tests
+## Запуск Автоматических Тестов
+
+Для запуска тестов используйте `pytest` из корневой директории проекта.
+
+**Важно:** Всегда запускайте тесты как модуль (`python -m pytest`), чтобы пакет `src` был найден корректно.
+
+### 1. Запуск Всех Тестов
 
 ```powershell
 python -m pytest tests/ -v
 ```
 
-> **Note:** If `tests/test_branch.py` fails when running the full suite, run it individually (see below).
+> **Примечание:** Если `tests/test_branch.py` падает при полном запуске, запустите его отдельно (см. ниже).
 
-### 2. Run Specific Test Suites
+### 2. Запуск Конкретных Наборов Тестов
 
-**Boundary Value Analysis (BVA)**
+**Анализ Граничных Значений (BVA)**
 ```powershell
 python -m pytest tests/test_bva.py -v
 ```
 
-**Equivalence Partitioning (EP)**
+**Разбиение на Классы Эквивалентности (EP)**
 ```powershell
 python -m pytest tests/test_equivalence.py -v
 ```
 
-**Statement Coverage**
+**Покрытие Операторов (Statement Coverage)**
 ```powershell
 python -m pytest tests/test_statement.py -v
 ```
 
-**Branch Coverage**
+**Покрытие Ветвей (Branch Coverage)**
 ```powershell
 python -m pytest tests/test_branch.py -v
 ```
 
-### 3. Check Code Coverage
+### 3. Проверка Покрытия Кода
 
-To see the coverage report (requires `pytest-cov`):
+Чтобы увидеть отчет о покрытии (требуется `pytest-cov`):
 
 ```powershell
 python -m pytest tests/ --cov=src --cov-branch --cov-report=term-missing
 ```
 
-### Troubleshooting
+### Устранение Неполадок
 
 - **`ModuleNotFoundError: No module named 'src'`**:
-  Make sure you are running the command from the root folder (`lab1`) and using `python -m pytest ...`, NOT just `pytest ...` or running the file directly.
+  Убедитесь, что вы запускаете команду из корневой папки (`lab1`) и используете `python -m pytest ...`, а НЕ просто `pytest ...` и не запускаете файл напрямую.
 
-- **Tests fail with `Exit code: 1`**:
-  Read the output to see which test failed. If `test_branch` fails in a full run, run it separately.
+- **Тесты падают с `Exit code: 1`**:
+  Прочитайте вывод, чтобы увидеть, какой тест упал. Если `test_branch` падает при полном запуске, запустите его отдельно.

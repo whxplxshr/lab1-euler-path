@@ -1,181 +1,181 @@
-# Pipeline — Euler Path Console Application
+# Пайплайн — Консольное Приложение Поиска Эйлерова Пути
 
-> Work progress tracker: epics, implementation status, test results, and notes.
+> Трекер прогресса работы: эпики, статус реализации, результаты тестов и заметки.
 
 ---
 
-## Epic 1: Algorithm Design & Implementation
+## Эпик 1: Проектирование и Реализация Алгоритмов
 
-**Status:** ✅ Done
-**Date:** 2026-02-15
+**Статус:** ✅ Готово
+**Дата:** 2026-02-15
 
-### Implemented
+### Реализовано
 
-| File | Description |
-|------|-------------|
-| `src/graph_utils.py` | Euler path/circuit validation, start vertex selection |
-| `src/hierholzer.py` | Hierholzer's algorithm (iterative DFS, two-stack approach) |
-| `src/fleury.py` | Fleury's algorithm (bridge-aware edge-by-edge traversal) |
+| Файл | Описание |
+|------|----------|
+| `src/graph_utils.py` | Валидация Эйлерова пути/цикла, выбор начальной вершины |
+| `src/hierholzer.py` | Алгоритм Хиерхольцера (итеративный DFS, подход с двумя стеками) |
+| `src/fleury.py` | Алгоритм Флёри (обход ребро-за-ребром с учетом мостов) |
 
-### Test Results
+### Результаты Тестов
 
-| Test file | Tests | Result |
-|-----------|-------|--------|
-| `tests/test_graph_utils.py` | 10 | ✅ All passed |
-| `tests/test_hierholzer.py` | 7 | ✅ All passed |
-| `tests/test_fleury.py` | 7 | ✅ All passed |
-| **Total** | **24** | **✅ 24/24** |
+| Файл теста | Тесты | Результат |
+|------------|-------|-----------|
+| `tests/test_graph_utils.py` | 10 | ✅ Все прошли |
+| `tests/test_hierholzer.py` | 7 | ✅ Все прошли |
+| `tests/test_fleury.py` | 7 | ✅ Все прошли |
+| **Всего** | **24** | **✅ 24/24** |
 
-### Manual Verification
+### Ручная Проверка
 
 ```
-Hierholzer triangle: [1, 2, 3, 1]       ✅ circuit
-Fleury triangle:     [1, 2, 3, 1]       ✅ circuit
-Hierholzer path:     [1, 2, 3, 4, 2]    ✅ path (2 odd vertices)
-Fleury path:         [1, 2, 3, 4, 2]    ✅ path (2 odd vertices)
-Hierholzer square:   [1, 2, 3, 4, 1]    ✅ circuit
-Fleury square:       [1, 2, 3, 4, 1]    ✅ circuit
-No Euler path:       ValueError raised   ✅ error handling
+Hierholzer triangle: [1, 2, 3, 1]       ✅ цикл
+Fleury triangle:     [1, 2, 3, 1]       ✅ цикл
+Hierholzer path:     [1, 2, 3, 4, 2]    ✅ путь (2 нечетные вершины)
+Fleury path:         [1, 2, 3, 4, 2]    ✅ путь (2 нечетные вершины)
+Hierholzer square:   [1, 2, 3, 4, 1]    ✅ цикл
+Fleury square:       [1, 2, 3, 4, 1]    ✅ цикл
+No Euler path:       ValueError raised  ✅ обработка ошибок
 ```
 
-### Notes
+### Заметки
 
-- Both algorithms work on `nx.Graph` copies — input graphs are never mutated.
-- `mutpy` package not available via pip (will address in Epic 5).
-
----
-
-## Epic 2: User Interface (Console)
-
-**Status:** ✅ Done
-**Date:** 2026-02-15
-
-### Implemented
-
-| File | Description |
-|------|-------------|
-| `src/io_handler.py` | JSON graph loading with schema validation, result saving to JSON |
-| `src/console_input.py` | Interactive console input for vertices and edges with validation |
-| `src/main.py` | Main menu: input method selection, algorithm selection, result display, JSON export |
-| `samples/triangle.json` | Sample triangle graph (Euler circuit) |
-| `samples/path_graph.json` | Sample path graph (2 odd-degree vertices) |
-
-### Test Results
-
-| Test file | Tests | Result |
-|-----------|-------|--------|
-| `tests/test_io_handler.py` | 18 | ✅ All passed |
-| `tests/test_console_input.py` | 13 | ✅ All passed |
-| **Epic 2 subtotal** | **31** | **✅ 31/31** |
-| **Project total** | **55** | **✅ 55/55** |
-
-### Notes
-
-- JSON format: `{"vertices": [...], "edges": [[u,v], ...]}` for input, `{"algorithm": "...", "euler_path": [...], "path_length": N}` for output.
-- Console input validates: integer types, positive counts, duplicate vertices, unknown vertex references.
-- Main app runs as `python -m src.main`.
+- Оба алгоритма работают с копиями `nx.Graph` — входные графы никогда не изменяются.
+- Пакет `mutpy` недоступен через pip (будет решено в Эпике 5).
 
 ---
 
-## Epic 3: Unit Testing (TDD)
+## Эпик 2: Пользовательский Интерфейс (Консоль)
 
-**Status:** ✅ Done
-**Date:** 2026-02-15
+**Статус:** ✅ Готово
+**Дата:** 2026-02-15
 
-### Implemented
+### Реализовано
 
-| File | Description |
-|------|-------------|
-| `tests/test_hierholzer.py` | 19 tests across 5 classes: circuit (5), path (5), negative (4), large graphs (3), immutability (2) |
-| `tests/test_fleury.py` | 23 tests across 7 classes: circuit (5), path (5), negative (4), bridge logic (5), large graphs (2), immutability (2) |
+| Файл | Описание |
+|------|----------|
+| `src/io_handler.py` | Загрузка графа из JSON с валидацией схемы, сохранение результатов в JSON |
+| `src/console_input.py` | Интерактивный консольный ввод вершин и ребер с валидацией |
+| `src/main.py` | Главное меню: выбор метода ввода, выбор алгоритма, отображение результатов, экспорт в JSON |
+| `samples/triangle.json` | Пример треугольного графа (Эйлеров цикл) |
+| `samples/path_graph.json` | Пример линейного графа (2 вершины нечетной степени) |
 
-### Test Results
+### Результаты Тестов
 
-| Test file | Tests | Result |
-|-----------|-------|--------|
-| `tests/test_hierholzer.py` | 19 | ✅ All passed |
-| `tests/test_fleury.py` | 23 | ✅ All passed |
-| **Epic 3 subtotal** | **42** | **✅ 42/42** |
-| **Project total** | **86** | **✅ 86/86** |
+| Файл теста | Тесты | Результат |
+|------------|-------|-----------|
+| `tests/test_io_handler.py` | 18 | ✅ Все прошли |
+| `tests/test_console_input.py` | 13 | ✅ Все прошли |
+| **Подитог Эпика 2** | **31** | **✅ 31/31** |
+| **Всего по проекту** | **55** | **✅ 55/55** |
 
-### Graph Types Tested
+### Заметки
 
-| Graph | Edges | Type | Algorithms |
+- Формат JSON: `{"vertices": [...], "edges": [[u,v], ...]}` для ввода, `{"algorithm": "...", "euler_path": [...], "path_length": N}` для вывода.
+- Консольный ввод валидирует: целочисленные типы, положительные счетчики, дубликаты вершин, ссылки на неизвестные вершины.
+- Приложение запускается как `python -m src.main`.
+
+---
+
+## Эпик 3: Модульное Тестирование (TDD)
+
+**Статус:** ✅ Готово
+**Дата:** 2026-02-15
+
+### Реализовано
+
+| Файл | Описание |
+|------|----------|
+| `tests/test_hierholzer.py` | 19 тестов в 5 классах: цикл (5), путь (5), негативные (4), большие графы (3), неизменяемость (2) |
+| `tests/test_fleury.py` | 23 теста в 7 классах: цикл (5), путь (5), негативные (4), логика мостов (5), большие графы (2), неизменяемость (2) |
+
+### Результаты Тестов
+
+| Файл теста | Тесты | Результат |
+|------------|-------|-----------|
+| `tests/test_hierholzer.py` | 19 | ✅ Все прошли |
+| `tests/test_fleury.py` | 23 | ✅ Все прошли |
+| **Подитог Эпика 3** | **42** | **✅ 42/42** |
+| **Всего по проекту** | **86** | **✅ 86/86** |
+
+### Протестированные Типы Графов
+
+| Граф | Ребра | Тип | Алгоритмы |
 |-------|-------|------|------------|
-| Triangle (3 nodes) | 3 | Circuit | Both |
-| Square (4 nodes) | 4 | Circuit | Both |
-| Figure-8 (5 nodes, shared vertex) | 6 | Circuit | Both |
-| Hexagon (6 nodes) | 6 | Circuit | Both |
-| K₅ complete (5 nodes) | 10 | Circuit | Hierholzer only |
-| Octagon (8 nodes) | 8 | Circuit | Fleury only |
-| Single edge | 1 | Path | Both |
-| Linear chain (3 nodes) | 2 | Path | Both |
-| 4-node graph | 4 | Path | Both |
-| Chain (5 nodes) | 4 | Path | Both |
-| Triangle + tail | 4 | Path | Both |
-| Ring (20 nodes) | 20 | Circuit (large) | Both |
-| Chain (10 nodes) | 9 | Path (large) | Both |
-| Disconnected | 2 | No path | Both |
-| K₄ complete | 6 | No path | Both |
-| Empty graph | 0 | No path | Both |
-| Single vertex | 0 | No path | Both |
+| Треугольник (3 узла) | 3 | Цикл | Оба |
+| Квадрат (4 узла) | 4 | Цикл | Оба |
+| Восьмерка (5 узлов, общая вершина) | 6 | Цикл | Оба |
+| Шестиугольник (6 узлов) | 6 | Цикл | Оба |
+| K₅ полный (5 узлов) | 10 | Цикл | Только Hierholzer |
+| Восьмиугольник (8 узлов) | 8 | Цикл | Только Fleury |
+| Одиночное ребро | 1 | Путь | Оба |
+| Линейная цепь (3 узла) | 2 | Путь | Оба |
+| 4-узловой граф | 4 | Путь | Оба |
+| Цепь (5 узлов) | 4 | Путь | Оба |
+| Треугольник + хвост | 4 | Путь | Оба |
+| Кольцо (20 узлов) | 20 | Цикл (большой) | Оба |
+| Цепь (10 узлов) | 9 | Путь (большой) | Оба |
+| Несвязный | 2 | Нет пути | Оба |
+| K₄ полный | 6 | Нет пути | Оба |
+| Пустой граф | 0 | Нет пути | Оба |
+| Одиночная вершина | 0 | Нет пути | Оба |
 
-### Notes
+### Заметки
 
-- Fleury's algorithm has a known limitation on K₅: its bridge-avoidance heuristic can cause dead-ends on dense complete graphs. K₅ tested only with Hierholzer.
-- Bridge logic (`_is_bridge`) tested directly: chain bridge detection, triangle non-bridge, figure-8 center navigation, lollipop graph with bridge, bridge-only option.
-- Both algorithms verified for input graph immutability (original graph not modified after execution).
-
----
-
-## Epic 4: Test Design Techniques
-
-**Status:** ✅ Done
-**Date:** 2026-02-15
-
-### Implemented
-
-| File | Technique | Scope |
-|------|-----------|-------|
-| `tests/test_bva.py` | Boundary Value Analysis | Min/max values, empty inputs, edge cases |
-| `tests/test_equivalence.py` | Equivalence Partitioning | Valid/invalid classes for graphs and IO |
-| `tests/test_statement.py` | Statement Testing | 100% line coverage of all source files |
-| `tests/test_branch.py` | Branch Testing | 100% branch coverage of control flow |
-
-### Test Results
-
-| Test file | Tests | Result |
-|-----------|-------|--------|
-| `tests/test_bva.py` | 15 | ✅ All passed |
-| `tests/test_equivalence.py` | 10 | ✅ All passed |
-| `tests/test_statement.py` | 5 | ✅ All passed |
-| `tests/test_branch.py` | 7 | ✅ All passed (isolated) |
-| **Epic 4 subtotal** | **37** | **✅ 37/37** |
-| **Project total** | **123** | **✅ 123/123** |
-
-### Notes
-
-- **Statement Coverage**: Achieved 100% across `graph_utils`, `hierholzer`, `fleury`, `io_handler`, `console_input`.
-- **Branch Coverage**: Achieved >90% target (approaching 100%).
-- **Known Issue**: Running the full suite `pytest tests/` may cause `test_branch.py` to fail due to side-effects from `test_statement.py` mocks. Tests should be run file-by-file for accurate verification.
+- У алгоритма Флёри есть известное ограничение на K₅: его эвристика избегания мостов может зайти в тупик на плотных полных графах. K₅ тестировался только с Хиерхольцером.
+- Логика мостов (`_is_bridge`) протестирована напрямую: обнаружение моста в цепи, отсутствие моста в треугольнике, навигация в центре восьмерки, граф-леденец с мостом.
+- Оба алгоритма проверены на неизменяемость входного графа (оригинал не модифицируется после выполнения).
 
 ---
 
-## Epic 5: Mutation Testing
+## Эпик 4: Техники Проектирования Тестов
 
-**Status:** � In Progress
-**Date:** 2026-02-15
+**Статус:** ✅ Готово
+**Дата:** 2026-02-15
 
-### Scope
+### Реализовано
 
-- Run MutPy on implemented algorithms.
-- Calculate mutation metrics (LCC, MCC, CoveredCodeMSI).
-- Analyze and improve test quality based on results.
+| Файл | Техника | Область действия |
+|------|---------|------------------|
+| `tests/test_bva.py` | Boundary Value Analysis (BVA) | Мин/макс значения, пустые вводы, граничные случаи |
+| `tests/test_equivalence.py` | Equivalence Partitioning (EP) | Валидные/невалидные классы для графов и IO |
+| `tests/test_statement.py` | Statement Testing | 100% покрытие строк всех исходных файлов |
+| `tests/test_branch.py` | Branch Testing | 100% покрытие ветвей потока управления |
 
-### Test Results
+### Результаты Тестов
 
-_No tests yet._
+| Файл теста | Тесты | Результат |
+|------------|-------|-----------|
+| `tests/test_bva.py` | 15 | ✅ Все прошли |
+| `tests/test_equivalence.py` | 10 | ✅ Все прошли |
+| `tests/test_statement.py` | 5 | ✅ Все прошли |
+| `tests/test_branch.py` | 7 | ✅ Все прошли (изолированно) |
+| **Подитог Эпика 4** | **37** | **✅ 37/37** |
+| **Всего по проекту** | **123** | **✅ 123/123** |
 
-### Notes
+### Заметки
 
-- `mutpy` package had installation issues; alternative packages may be needed.
+- **Statement Coverage**: Достигнуто 100% в `graph_utils`, `hierholzer`, `fleury`, `io_handler`, `console_input`.
+- **Branch Coverage**: Достигнуто >90% (приближается к 100%).
+- **Известная проблема**: Запуск полного набора `pytest tests/` может привести к падению `test_branch.py` из-за побочных эффектов моков в `test_statement.py`. Тесты следует запускать пофайлово для точной проверки.
+
+---
+
+## Эпик 5: Мутационное Тестирование
+
+**Статус:** ⚠️ В процессе (или Готово с учетом отчета)
+**Дата:** 2026-02-15
+
+### Область действия
+
+- Запуск MutPy на реализованных алгоритмах.
+- Расчет мутационных метрик (LCC, MCC, CoveredCodeMSI).
+- Анализ и улучшение качества тестов на основе результатов.
+
+### Результаты Тестов
+
+_См. mutation_report.md_
+
+### Заметки
+
+- Пакет `mutpy` имел проблемы с установкой; могут потребоваться альтернативные пакеты.
